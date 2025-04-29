@@ -33,9 +33,15 @@ public class PlayerMove : MonoBehaviour
         Vector3 NewPosition = new Vector3(targetXPosition, currentPosition.y, currentPosition.z);
         playerTransform.position = Vector3.Lerp(currentPosition, NewPosition, smoothTime);
         HandleJump(); 
-        if (playerTransform.position == NewPosition){
+
+        if (Mathf.Abs(playerTransform.position.x - NewPosition.x) < 0.5f)
+        {
             isMoving = false;
         }
+
+        /*if (playerTransform.position == NewPosition){
+            isMoving = false;
+        }*/
     }
 
     private void Movement()
